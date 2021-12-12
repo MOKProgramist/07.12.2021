@@ -1,21 +1,20 @@
 ﻿using System;
 
-namespace _19
+namespace _5_dop
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int sum = 0;
             // объявялем размер масива
             Console.Write("Введите размерность массива: ");
             var dlina = int.Parse(Console.ReadLine());
             int[] mas = new int[dlina];
 
-            // ввод элементов массива
+            // ввод массива
             for (int i = 0; i < mas.Length; i++)
             {
-                Console.Write($"Введите {i} элемент массива: ");
+                Console.Write($"m[{i}] = ");
                 mas[i] = int.Parse(Console.ReadLine());
             }
 
@@ -23,13 +22,14 @@ namespace _19
             Console.WriteLine();
             for (int i = 0; i < mas.Length; i++)
             {
-                // текущий элемент 
-                var index = mas[i];
-                // условие
-                if (index < -5 && index < 0) sum++;
-                Console.WriteLine($"m[{i}] = {index}");
+                // выделяем десяток и еденицу числа
+                var a = (mas[i] / 10) % 10;
+                var c = mas[i] % 10;
+
+                // складываем десяток и еденицу и проверяем кратность на 7
+                if ((a + c) % 7 == 0 && mas[i] > 0) Console.WriteLine(mas[i]);
             }
-            Console.WriteLine($"Элементов попало под условие: {sum}");
+
             Console.ReadLine();
         }
     }
